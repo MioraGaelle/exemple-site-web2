@@ -16,6 +16,7 @@ require 'utils/utils.php';
 require 'utils/televersementUtils.php';
 require 'utils/telechargementUtils.php';
 require 'controleur/controleur.php';
+require 'controleur/controleurTest.php'; // ajouteur le controleur test dans le routeur, la page d'entrée
 require 'controleur/controleurLivre.php';
 require 'controleur/controleurPage.php';
 require 'controleur/controleurUtilisateur.php';
@@ -32,6 +33,7 @@ try {
 		header('Location: ' . $redirigerVers);
 		return;
 	}
+
 
 	switch ($_SERVER['REQUEST_METHOD']) {
 		case 'GET':
@@ -72,6 +74,8 @@ try {
 
 function gererRequetesGet()
 {
+	//Des choses à changer dépendemment du site web
+	//Est-ce que dans get j'ai une clé ressource?
 	if (!isset($_GET['ressource'])) {
 		return afficherPageDefaut();
 	}
@@ -107,6 +111,9 @@ function gererRequetesGet()
 		case '/deconnexion':
 			deconnecterUtilisateur();
 			break;
+		case '/test': //appeler la fonction dans le get
+			afficherFormulaireTest();
+			break;
 		default:
 			throw new Exception('404 : La page que vous recherchez n\'existe pas');
 	}
@@ -123,6 +130,9 @@ function gererRequetesPost()
 			break;
 		case '/livres':
 			ajouterLivre();
+			break;
+		case '/test':
+			ajouterTest();
 			break;
 		default:
 			throw new Exception('404 : Impossible d\'ajouter ce type de ressource');

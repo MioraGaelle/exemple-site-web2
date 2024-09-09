@@ -14,6 +14,10 @@
         <li class="nav-item">
           <a class="nav-link <?php NavClass("/livres"); ?>" href="index.php?ressource=/livres">Livres</a>
         </li>
+        <!-- Élément ajouté // créer un controleur de Test dans dossier controleur-->
+        <li class="nav-item">
+          <a class="nav-link <?php NavClass("/test"); ?>" href="index.php?ressource=/test">Test</a>
+        </li>
       </ul>
       <!-- Éléments du menu à droite -->
       <ul class="navbar-nav">
@@ -24,6 +28,7 @@
           <li class="nav-item">
             <a class="nav-link <?php NavClass("/inscription"); ?>" href="index.php?ressource=/inscription">Inscription</a>
           </li>
+          
         <?php } else { ?>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
